@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['prerequisites_0',['Prerequisites',['../md_README.html#autotoc_md1',1,'']]]
+  ['installation_0',['Installation',['../md_README.html#autotoc_md2',1,'']]]
 ];

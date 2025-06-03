@@ -29,7 +29,9 @@ var NAVTREE =
       [ "Prerequisites", "md_README.html#autotoc_md1", null ],
       [ "Installation", "md_README.html#autotoc_md2", null ],
       [ "Test", "md_README.html#autotoc_md3", null ],
-      [ "Benchmark", "md_README.html#autotoc_md4", null ]
+      [ "Benchmark", "md_README.html#autotoc_md4", null ],
+      [ "Documentation", "md_README.html#autotoc_md5", null ],
+      [ "Code coverage", "md_README.html#autotoc_md6", null ]
     ] ],
     [ "Files", "files.html", [
       [ "File List", "files.html", "files_dup" ],

@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['installation_0',['Installation',['../md_README.html#autotoc_md2',1,'']]]
+  ['code_20coverage_0',['Code coverage',['../md_README.html#autotoc_md6',1,'']]],
+  ['coverage_1',['Code coverage',['../md_README.html#autotoc_md6',1,'']]]
 ];

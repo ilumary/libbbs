@@ -1,1 +1,1 @@
-genhtml coverage.info --output-directory doc/lcov
+genhtml coverage.info --exclude build --exclude sha3 --exclude test --output-directory doc/lcov
