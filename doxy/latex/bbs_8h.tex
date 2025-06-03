@@ -1,0 +1,571 @@
+\doxysection{include/bbs.h File Reference}
+\hypertarget{bbs_8h}{}\label{bbs_8h}\index{include/bbs.h@{include/bbs.h}}
+
+
+The main libbbs header file.  
+
+
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include $<$stdarg.\+h$>$}\newline
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{bbs_8h_a862a7fa5d29e2ee4fa09f841fea58926}\label{bbs_8h_a862a7fa5d29e2ee4fa09f841fea58926} 
+\#define {\bfseries BBS\+\_\+\+SK\+\_\+\+LEN}~32
+\begin{DoxyCompactList}\small\item\em Octet string length of secret key. \end{DoxyCompactList}\item 
+\Hypertarget{bbs_8h_a304c33827a522616b24e8527805edd46}\label{bbs_8h_a304c33827a522616b24e8527805edd46} 
+\#define {\bfseries BBS\+\_\+\+PK\+\_\+\+LEN}~96
+\begin{DoxyCompactList}\small\item\em Octet string length of public key. \end{DoxyCompactList}\item 
+\Hypertarget{bbs_8h_a9d099bae5cf774863fa1047b1a39f228}\label{bbs_8h_a9d099bae5cf774863fa1047b1a39f228} 
+\#define {\bfseries BBS\+\_\+\+SIG\+\_\+\+LEN}~80
+\begin{DoxyCompactList}\small\item\em Octet string length of signature. \end{DoxyCompactList}\item 
+\Hypertarget{bbs_8h_aac4bfee018995b745ddd8b322db48f1f}\label{bbs_8h_aac4bfee018995b745ddd8b322db48f1f} 
+\#define {\bfseries BBS\+\_\+\+PROOF\+\_\+\+BASE\+\_\+\+LEN}~272
+\begin{DoxyCompactList}\small\item\em Minimum octet string length of proof. \end{DoxyCompactList}\item 
+\Hypertarget{bbs_8h_a72c62139f7d768356533d6ee5a397aad}\label{bbs_8h_a72c62139f7d768356533d6ee5a397aad} 
+\#define {\bfseries BBS\+\_\+\+PROOF\+\_\+\+UD\+\_\+\+ELEM\+\_\+\+LEN}~32
+\begin{DoxyCompactList}\small\item\em Octet string length of UD element. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{bbs_8h_a4b33fe2f3edee626c07a87f61062e782}{BBS\+\_\+\+PROOF\+\_\+\+LEN}}(num\+\_\+undisclosed)
+\begin{DoxyCompactList}\small\item\em Macro that calculates the octet string length of proof with {\ttfamily num\+\_\+undisclosed} number of undisclosed messages. \end{DoxyCompactList}\item 
+\Hypertarget{bbs_8h_a2753252c37ca6d31b89ed291edee0329}\label{bbs_8h_a2753252c37ca6d31b89ed291edee0329} 
+\#define {\bfseries BBS\+\_\+\+OK}~0
+\begin{DoxyCompactList}\small\item\em return value on success \end{DoxyCompactList}\item 
+\Hypertarget{bbs_8h_ab5c9fb8680e3e981743405eff1c2117c}\label{bbs_8h_ab5c9fb8680e3e981743405eff1c2117c} 
+\#define {\bfseries BBS\+\_\+\+ERROR}~1
+\begin{DoxyCompactList}\small\item\em return value on error \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{bbs_8h_ad585516e29abe399faf993dd263bdab0}{bbs\+\_\+sha256\+\_\+keygen\+\_\+full}}(...)~bbs\+\_\+keygen\+\_\+full(bbs\+\_\+sha256\+\_\+cipher\+\_\+suite,\+\_\+\+\_\+\+VA\+\_\+\+ARGS\+\_\+\+\_\+)
+\item 
+\#define \mbox{\hyperlink{bbs_8h_a8112d8b6e0dcf7a91b4f667147175639}{bbs\+\_\+sha256\+\_\+keygen}}(...)~bbs\+\_\+keygen(bbs\+\_\+sha256\+\_\+cipher\+\_\+suite,\+\_\+\+\_\+\+VA\+\_\+\+ARGS\+\_\+\+\_\+)
+\item 
+\#define \mbox{\hyperlink{bbs_8h_a7b0ca00b2ca3ab042c57c68b48362cb3}{bbs\+\_\+sha256\+\_\+sk\+\_\+to\+\_\+pk}}(...)~bbs\+\_\+sk\+\_\+to\+\_\+pk(bbs\+\_\+sha256\+\_\+cipher\+\_\+suite,\+\_\+\+\_\+\+VA\+\_\+\+ARGS\+\_\+\+\_\+)
+\item 
+\#define \mbox{\hyperlink{bbs_8h_aeace489ee9c86c915a200ac48a9e1150}{bbs\+\_\+sha256\+\_\+sign}}(...)~bbs\+\_\+sign(bbs\+\_\+sha256\+\_\+cipher\+\_\+suite,\+\_\+\+\_\+\+VA\+\_\+\+ARGS\+\_\+\+\_\+)
+\item 
+\#define \mbox{\hyperlink{bbs_8h_a40881d70763a40abdbdaf66c52f23ad7}{bbs\+\_\+sha256\+\_\+verify}}(...)~bbs\+\_\+verify(bbs\+\_\+sha256\+\_\+cipher\+\_\+suite,\+\_\+\+\_\+\+VA\+\_\+\+ARGS\+\_\+\+\_\+)
+\item 
+\#define \mbox{\hyperlink{bbs_8h_a55f93ef693d8551569dbed1452f5a5f8}{bbs\+\_\+sha256\+\_\+proof\+\_\+gen}}(...)~bbs\+\_\+proof\+\_\+gen(bbs\+\_\+sha256\+\_\+cipher\+\_\+suite,\+\_\+\+\_\+\+VA\+\_\+\+ARGS\+\_\+\+\_\+)
+\item 
+\#define \mbox{\hyperlink{bbs_8h_a386bf736796dcfd038971b5816ed27c3}{bbs\+\_\+sha256\+\_\+proof\+\_\+verify}}(...)~bbs\+\_\+proof\+\_\+verify(bbs\+\_\+sha256\+\_\+cipher\+\_\+suite,\+\_\+\+\_\+\+VA\+\_\+\+ARGS\+\_\+\+\_\+)
+\item 
+\#define \mbox{\hyperlink{bbs_8h_a5a06f91ec192ea730de3af7a0936f0e2}{bbs\+\_\+shake256\+\_\+keygen\+\_\+full}}(...)~bbs\+\_\+keygen\+\_\+full(bbs\+\_\+shake256\+\_\+cipher\+\_\+suite,\+\_\+\+\_\+\+VA\+\_\+\+ARGS\+\_\+\+\_\+)
+\item 
+\#define \mbox{\hyperlink{bbs_8h_add713b263ea7b844cd7b5286e3681392}{bbs\+\_\+shake256\+\_\+keygen}}(...)~bbs\+\_\+keygen(bbs\+\_\+shake256\+\_\+cipher\+\_\+suite,\+\_\+\+\_\+\+VA\+\_\+\+ARGS\+\_\+\+\_\+)
+\item 
+\#define \mbox{\hyperlink{bbs_8h_a7a394c09c3861b199b391d65efbc5013}{bbs\+\_\+shake256\+\_\+sk\+\_\+to\+\_\+pk}}(...)~bbs\+\_\+sk\+\_\+to\+\_\+pk(bbs\+\_\+shake256\+\_\+cipher\+\_\+suite,\+\_\+\+\_\+\+VA\+\_\+\+ARGS\+\_\+\+\_\+)
+\item 
+\#define \mbox{\hyperlink{bbs_8h_a47553318871a1a91a2c992b1744900ec}{bbs\+\_\+shake256\+\_\+sign}}(...)~bbs\+\_\+sign(bbs\+\_\+shake256\+\_\+cipher\+\_\+suite,\+\_\+\+\_\+\+VA\+\_\+\+ARGS\+\_\+\+\_\+)
+\item 
+\#define \mbox{\hyperlink{bbs_8h_a8c0bdd28b4f870bc9054e55a47f9b29f}{bbs\+\_\+shake256\+\_\+verify}}(...)~bbs\+\_\+verify(bbs\+\_\+shake256\+\_\+cipher\+\_\+suite,\+\_\+\+\_\+\+VA\+\_\+\+ARGS\+\_\+\+\_\+)
+\item 
+\#define \mbox{\hyperlink{bbs_8h_a4a79cc45ab67f45286a59660d885e57b}{bbs\+\_\+shake256\+\_\+proof\+\_\+gen}}(...)~bbs\+\_\+proof\+\_\+gen(bbs\+\_\+shake256\+\_\+cipher\+\_\+suite,\+\_\+\+\_\+\+VA\+\_\+\+ARGS\+\_\+\+\_\+)
+\item 
+\#define \mbox{\hyperlink{bbs_8h_a2efc844a753ad8043adeedeae1c80444}{bbs\+\_\+shake256\+\_\+proof\+\_\+verify}}(...)~bbs\+\_\+proof\+\_\+verify(bbs\+\_\+shake256\+\_\+cipher\+\_\+suite,\+\_\+\+\_\+\+VA\+\_\+\+ARGS\+\_\+\+\_\+)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef uint8\+\_\+t \mbox{\hyperlink{bbs_8h_ac89498ea1c6e2e9a477430cc9395b3ec}{bbs\+\_\+secret\+\_\+key}}\mbox{[}\mbox{\hyperlink{bbs_8h_a862a7fa5d29e2ee4fa09f841fea58926}{BBS\+\_\+\+SK\+\_\+\+LEN}}\mbox{]}
+\begin{DoxyCompactList}\small\item\em BBS secret key. \end{DoxyCompactList}\item 
+typedef uint8\+\_\+t \mbox{\hyperlink{bbs_8h_a10f332e56f89aff4e812674de7e2a07d}{bbs\+\_\+public\+\_\+key}}\mbox{[}\mbox{\hyperlink{bbs_8h_a304c33827a522616b24e8527805edd46}{BBS\+\_\+\+PK\+\_\+\+LEN}}\mbox{]}
+\begin{DoxyCompactList}\small\item\em BBS public key. \end{DoxyCompactList}\item 
+typedef uint8\+\_\+t \mbox{\hyperlink{bbs_8h_a76a4a8d263f86a1ecf326bcd4eb9e475}{bbs\+\_\+signature}}\mbox{[}\mbox{\hyperlink{bbs_8h_a9d099bae5cf774863fa1047b1a39f228}{BBS\+\_\+\+SIG\+\_\+\+LEN}}\mbox{]}
+\begin{DoxyCompactList}\small\item\em BBS signature. \end{DoxyCompactList}\item 
+typedef struct bbs\+\_\+cipher\+\_\+suite \mbox{\hyperlink{bbs_8h_a7c890f8c0037fc85d1c711eace87d48b}{bbs\+\_\+cipher\+\_\+suite\+\_\+t}}
+\begin{DoxyCompactList}\small\item\em BBS cipher suite. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{bbs_8h_aab40dbd797c0e8ae60f453436fc6bc46}{bbs\+\_\+init}} (void)
+\item 
+int \mbox{\hyperlink{bbs_8h_a996edf3d0387958c2c53fdb7f4ce9520}{bbs\+\_\+deinit}} (void)
+\item 
+int \mbox{\hyperlink{bbs_8h_a885516ab96f34e6c0b10bfed1e4235c0}{bbs\+\_\+keygen\+\_\+full}} (\mbox{\hyperlink{bbs_8h_a7c890f8c0037fc85d1c711eace87d48b}{bbs\+\_\+cipher\+\_\+suite\+\_\+t}} \texorpdfstring{$\ast$}{*}cipher\+\_\+suite, \mbox{\hyperlink{bbs_8h_ac89498ea1c6e2e9a477430cc9395b3ec}{bbs\+\_\+secret\+\_\+key}} sk, \mbox{\hyperlink{bbs_8h_a10f332e56f89aff4e812674de7e2a07d}{bbs\+\_\+public\+\_\+key}} pk)
+\item 
+int \mbox{\hyperlink{bbs_8h_ab41b74bbfdb3dc26512935ee4ed8f59e}{bbs\+\_\+keygen}} (\mbox{\hyperlink{bbs_8h_a7c890f8c0037fc85d1c711eace87d48b}{bbs\+\_\+cipher\+\_\+suite\+\_\+t}} \texorpdfstring{$\ast$}{*}cipher\+\_\+suite, \mbox{\hyperlink{bbs_8h_ac89498ea1c6e2e9a477430cc9395b3ec}{bbs\+\_\+secret\+\_\+key}} sk, const uint8\+\_\+t \texorpdfstring{$\ast$}{*}key\+\_\+material, uint16\+\_\+t key\+\_\+material\+\_\+len, const uint8\+\_\+t \texorpdfstring{$\ast$}{*}key\+\_\+info, uint16\+\_\+t key\+\_\+info\+\_\+len, const uint8\+\_\+t \texorpdfstring{$\ast$}{*}key\+\_\+dst, uint8\+\_\+t key\+\_\+dst\+\_\+len)
+\item 
+int \mbox{\hyperlink{bbs_8h_a470821f71af30c12b6e7c6d2532dc504}{bbs\+\_\+sk\+\_\+to\+\_\+pk}} (\mbox{\hyperlink{bbs_8h_a7c890f8c0037fc85d1c711eace87d48b}{bbs\+\_\+cipher\+\_\+suite\+\_\+t}} \texorpdfstring{$\ast$}{*}cipher\+\_\+suite, const \mbox{\hyperlink{bbs_8h_ac89498ea1c6e2e9a477430cc9395b3ec}{bbs\+\_\+secret\+\_\+key}} sk, \mbox{\hyperlink{bbs_8h_a10f332e56f89aff4e812674de7e2a07d}{bbs\+\_\+public\+\_\+key}} pk)
+\item 
+int \mbox{\hyperlink{bbs_8h_a04e904f88dee4daa28f8731fbcb06774}{bbs\+\_\+sign}} (\mbox{\hyperlink{bbs_8h_a7c890f8c0037fc85d1c711eace87d48b}{bbs\+\_\+cipher\+\_\+suite\+\_\+t}} \texorpdfstring{$\ast$}{*}cipher\+\_\+suite, const \mbox{\hyperlink{bbs_8h_ac89498ea1c6e2e9a477430cc9395b3ec}{bbs\+\_\+secret\+\_\+key}} sk, const \mbox{\hyperlink{bbs_8h_a10f332e56f89aff4e812674de7e2a07d}{bbs\+\_\+public\+\_\+key}} pk, \mbox{\hyperlink{bbs_8h_a76a4a8d263f86a1ecf326bcd4eb9e475}{bbs\+\_\+signature}} signature, const uint8\+\_\+t \texorpdfstring{$\ast$}{*}header, uint64\+\_\+t header\+\_\+len, uint64\+\_\+t num\+\_\+messages,...)
+\begin{DoxyCompactList}\small\item\em Create a signature. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{bbs_8h_a6a83a226c697161c7598e7b7a42d82b5}{bbs\+\_\+verify}} (\mbox{\hyperlink{bbs_8h_a7c890f8c0037fc85d1c711eace87d48b}{bbs\+\_\+cipher\+\_\+suite\+\_\+t}} \texorpdfstring{$\ast$}{*}cipher\+\_\+suite, const \mbox{\hyperlink{bbs_8h_a10f332e56f89aff4e812674de7e2a07d}{bbs\+\_\+public\+\_\+key}} pk, const \mbox{\hyperlink{bbs_8h_a76a4a8d263f86a1ecf326bcd4eb9e475}{bbs\+\_\+signature}} signature, const uint8\+\_\+t \texorpdfstring{$\ast$}{*}header, uint64\+\_\+t header\+\_\+len, uint64\+\_\+t num\+\_\+messages,...)
+\begin{DoxyCompactList}\small\item\em Verify a signature. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{bbs_8h_a46711178bb4c66e36d6a12aea27862ac}{bbs\+\_\+proof\+\_\+gen}} (\mbox{\hyperlink{bbs_8h_a7c890f8c0037fc85d1c711eace87d48b}{bbs\+\_\+cipher\+\_\+suite\+\_\+t}} \texorpdfstring{$\ast$}{*}cipher\+\_\+suite, const \mbox{\hyperlink{bbs_8h_a10f332e56f89aff4e812674de7e2a07d}{bbs\+\_\+public\+\_\+key}} pk, const \mbox{\hyperlink{bbs_8h_a76a4a8d263f86a1ecf326bcd4eb9e475}{bbs\+\_\+signature}} signature, uint8\+\_\+t \texorpdfstring{$\ast$}{*}proof, const uint8\+\_\+t \texorpdfstring{$\ast$}{*}header, uint64\+\_\+t header\+\_\+len, const uint8\+\_\+t \texorpdfstring{$\ast$}{*}presentation\+\_\+header, uint64\+\_\+t presentation\+\_\+header\+\_\+len, const uint64\+\_\+t \texorpdfstring{$\ast$}{*}disclosed\+\_\+indexes, uint64\+\_\+t disclosed\+\_\+indexes\+\_\+len, uint64\+\_\+t num\+\_\+messages,...)
+\begin{DoxyCompactList}\small\item\em Create a proof over a signature. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{bbs_8h_a5ad5e92c29f1bab615dff4f6c367ffba}{bbs\+\_\+proof\+\_\+verify}} (\mbox{\hyperlink{bbs_8h_a7c890f8c0037fc85d1c711eace87d48b}{bbs\+\_\+cipher\+\_\+suite\+\_\+t}} \texorpdfstring{$\ast$}{*}cipher\+\_\+suite, const \mbox{\hyperlink{bbs_8h_a10f332e56f89aff4e812674de7e2a07d}{bbs\+\_\+public\+\_\+key}} pk, const uint8\+\_\+t \texorpdfstring{$\ast$}{*}proof, uint64\+\_\+t proof\+\_\+len, const uint8\+\_\+t \texorpdfstring{$\ast$}{*}header, uint64\+\_\+t header\+\_\+len, const uint8\+\_\+t \texorpdfstring{$\ast$}{*}presentation\+\_\+header, uint64\+\_\+t presentation\+\_\+header\+\_\+len, const uint64\+\_\+t \texorpdfstring{$\ast$}{*}disclosed\+\_\+indexes, uint64\+\_\+t disclosed\+\_\+indexes\+\_\+len, uint64\+\_\+t num\+\_\+messages,...)
+\begin{DoxyCompactList}\small\item\em Verify a proof over a signature. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{bbs_8h_a7c890f8c0037fc85d1c711eace87d48b}{bbs\+\_\+cipher\+\_\+suite\+\_\+t}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{bbs_8h_a4a423545eebbd2afbd2fce8f168b5aeb}{bbs\+\_\+sha256\+\_\+cipher\+\_\+suite}}
+\item 
+\mbox{\hyperlink{bbs_8h_a7c890f8c0037fc85d1c711eace87d48b}{bbs\+\_\+cipher\+\_\+suite\+\_\+t}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{bbs_8h_a040795ea1a4f45b5f9471e7d913f85d7}{bbs\+\_\+shake256\+\_\+cipher\+\_\+suite}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The main libbbs header file. 
+
+(C) 2025 Fraunhofer AISEC
+
+\begin{DoxyAuthor}{Author}
+Thomas Bellebaum 
+
+Sebastian Schmiedmayer 
+
+Martin Schanzenbach 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2 Jun 2025 
+\end{DoxyDate}
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{bbs_8h_a4b33fe2f3edee626c07a87f61062e782}\label{bbs_8h_a4b33fe2f3edee626c07a87f61062e782} 
+\index{bbs.h@{bbs.h}!BBS\_PROOF\_LEN@{BBS\_PROOF\_LEN}}
+\index{BBS\_PROOF\_LEN@{BBS\_PROOF\_LEN}!bbs.h@{bbs.h}}
+\doxysubsubsection{\texorpdfstring{BBS\_PROOF\_LEN}{BBS\_PROOF\_LEN}}
+{\footnotesize\ttfamily \#define BBS\+\_\+\+PROOF\+\_\+\+LEN(\begin{DoxyParamCaption}\item[{}]{num\+\_\+undisclosed }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (\mbox{\hyperlink{bbs_8h_aac4bfee018995b745ddd8b322db48f1f}{BBS\_PROOF\_BASE\_LEN}}\ +\ num\_undisclosed\ *\ \mbox{\hyperlink{bbs_8h_a72c62139f7d768356533d6ee5a397aad}{BBS\_PROOF\_UD\_ELEM\_LEN}}\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ )}
+
+\end{DoxyCode}
+
+
+Macro that calculates the octet string length of proof with {\ttfamily num\+\_\+undisclosed} number of undisclosed messages. 
+
+\Hypertarget{bbs_8h_a8112d8b6e0dcf7a91b4f667147175639}\label{bbs_8h_a8112d8b6e0dcf7a91b4f667147175639} 
+\index{bbs.h@{bbs.h}!bbs\_sha256\_keygen@{bbs\_sha256\_keygen}}
+\index{bbs\_sha256\_keygen@{bbs\_sha256\_keygen}!bbs.h@{bbs.h}}
+\doxysubsubsection{\texorpdfstring{bbs\_sha256\_keygen}{bbs\_sha256\_keygen}}
+{\footnotesize\ttfamily \#define bbs\+\_\+sha256\+\_\+keygen(\begin{DoxyParamCaption}\item[{}]{... }\end{DoxyParamCaption})~bbs\+\_\+keygen(bbs\+\_\+sha256\+\_\+cipher\+\_\+suite,\+\_\+\+\_\+\+VA\+\_\+\+ARGS\+\_\+\+\_\+)}
+
+Helper for SHA256 suite \begin{DoxySeeAlso}{See also}
+\doxylink{bbs_8h_ab41b74bbfdb3dc26512935ee4ed8f59e}{bbs\+\_\+keygen} 
+\end{DoxySeeAlso}
+\Hypertarget{bbs_8h_ad585516e29abe399faf993dd263bdab0}\label{bbs_8h_ad585516e29abe399faf993dd263bdab0} 
+\index{bbs.h@{bbs.h}!bbs\_sha256\_keygen\_full@{bbs\_sha256\_keygen\_full}}
+\index{bbs\_sha256\_keygen\_full@{bbs\_sha256\_keygen\_full}!bbs.h@{bbs.h}}
+\doxysubsubsection{\texorpdfstring{bbs\_sha256\_keygen\_full}{bbs\_sha256\_keygen\_full}}
+{\footnotesize\ttfamily \#define bbs\+\_\+sha256\+\_\+keygen\+\_\+full(\begin{DoxyParamCaption}\item[{}]{... }\end{DoxyParamCaption})~bbs\+\_\+keygen\+\_\+full(bbs\+\_\+sha256\+\_\+cipher\+\_\+suite,\+\_\+\+\_\+\+VA\+\_\+\+ARGS\+\_\+\+\_\+)}
+
+Helper for SHA256 suite \begin{DoxySeeAlso}{See also}
+\doxylink{bbs_8h_a885516ab96f34e6c0b10bfed1e4235c0}{bbs\+\_\+keygen\+\_\+full} 
+\end{DoxySeeAlso}
+\Hypertarget{bbs_8h_a55f93ef693d8551569dbed1452f5a5f8}\label{bbs_8h_a55f93ef693d8551569dbed1452f5a5f8} 
+\index{bbs.h@{bbs.h}!bbs\_sha256\_proof\_gen@{bbs\_sha256\_proof\_gen}}
+\index{bbs\_sha256\_proof\_gen@{bbs\_sha256\_proof\_gen}!bbs.h@{bbs.h}}
+\doxysubsubsection{\texorpdfstring{bbs\_sha256\_proof\_gen}{bbs\_sha256\_proof\_gen}}
+{\footnotesize\ttfamily \#define bbs\+\_\+sha256\+\_\+proof\+\_\+gen(\begin{DoxyParamCaption}\item[{}]{... }\end{DoxyParamCaption})~bbs\+\_\+proof\+\_\+gen(bbs\+\_\+sha256\+\_\+cipher\+\_\+suite,\+\_\+\+\_\+\+VA\+\_\+\+ARGS\+\_\+\+\_\+)}
+
+Helper for SHA256 suite \begin{DoxySeeAlso}{See also}
+\doxylink{bbs_8h_a46711178bb4c66e36d6a12aea27862ac}{bbs\+\_\+proof\+\_\+gen} 
+\end{DoxySeeAlso}
+\Hypertarget{bbs_8h_a386bf736796dcfd038971b5816ed27c3}\label{bbs_8h_a386bf736796dcfd038971b5816ed27c3} 
+\index{bbs.h@{bbs.h}!bbs\_sha256\_proof\_verify@{bbs\_sha256\_proof\_verify}}
+\index{bbs\_sha256\_proof\_verify@{bbs\_sha256\_proof\_verify}!bbs.h@{bbs.h}}
+\doxysubsubsection{\texorpdfstring{bbs\_sha256\_proof\_verify}{bbs\_sha256\_proof\_verify}}
+{\footnotesize\ttfamily \#define bbs\+\_\+sha256\+\_\+proof\+\_\+verify(\begin{DoxyParamCaption}\item[{}]{... }\end{DoxyParamCaption})~bbs\+\_\+proof\+\_\+verify(bbs\+\_\+sha256\+\_\+cipher\+\_\+suite,\+\_\+\+\_\+\+VA\+\_\+\+ARGS\+\_\+\+\_\+)}
+
+Helper for SHA256 suite \begin{DoxySeeAlso}{See also}
+\doxylink{bbs_8h_a5ad5e92c29f1bab615dff4f6c367ffba}{bbs\+\_\+proof\+\_\+verify} 
+\end{DoxySeeAlso}
+\Hypertarget{bbs_8h_aeace489ee9c86c915a200ac48a9e1150}\label{bbs_8h_aeace489ee9c86c915a200ac48a9e1150} 
+\index{bbs.h@{bbs.h}!bbs\_sha256\_sign@{bbs\_sha256\_sign}}
+\index{bbs\_sha256\_sign@{bbs\_sha256\_sign}!bbs.h@{bbs.h}}
+\doxysubsubsection{\texorpdfstring{bbs\_sha256\_sign}{bbs\_sha256\_sign}}
+{\footnotesize\ttfamily \#define bbs\+\_\+sha256\+\_\+sign(\begin{DoxyParamCaption}\item[{}]{... }\end{DoxyParamCaption})~bbs\+\_\+sign(bbs\+\_\+sha256\+\_\+cipher\+\_\+suite,\+\_\+\+\_\+\+VA\+\_\+\+ARGS\+\_\+\+\_\+)}
+
+Helper for SHA256 suite \begin{DoxySeeAlso}{See also}
+\doxylink{bbs_8h_a04e904f88dee4daa28f8731fbcb06774}{bbs\+\_\+sign} 
+\end{DoxySeeAlso}
+\Hypertarget{bbs_8h_a7b0ca00b2ca3ab042c57c68b48362cb3}\label{bbs_8h_a7b0ca00b2ca3ab042c57c68b48362cb3} 
+\index{bbs.h@{bbs.h}!bbs\_sha256\_sk\_to\_pk@{bbs\_sha256\_sk\_to\_pk}}
+\index{bbs\_sha256\_sk\_to\_pk@{bbs\_sha256\_sk\_to\_pk}!bbs.h@{bbs.h}}
+\doxysubsubsection{\texorpdfstring{bbs\_sha256\_sk\_to\_pk}{bbs\_sha256\_sk\_to\_pk}}
+{\footnotesize\ttfamily \#define bbs\+\_\+sha256\+\_\+sk\+\_\+to\+\_\+pk(\begin{DoxyParamCaption}\item[{}]{... }\end{DoxyParamCaption})~bbs\+\_\+sk\+\_\+to\+\_\+pk(bbs\+\_\+sha256\+\_\+cipher\+\_\+suite,\+\_\+\+\_\+\+VA\+\_\+\+ARGS\+\_\+\+\_\+)}
+
+Helper for SHA256 suite \begin{DoxySeeAlso}{See also}
+\doxylink{bbs_8h_a470821f71af30c12b6e7c6d2532dc504}{bbs\+\_\+sk\+\_\+to\+\_\+pk} 
+\end{DoxySeeAlso}
+\Hypertarget{bbs_8h_a40881d70763a40abdbdaf66c52f23ad7}\label{bbs_8h_a40881d70763a40abdbdaf66c52f23ad7} 
+\index{bbs.h@{bbs.h}!bbs\_sha256\_verify@{bbs\_sha256\_verify}}
+\index{bbs\_sha256\_verify@{bbs\_sha256\_verify}!bbs.h@{bbs.h}}
+\doxysubsubsection{\texorpdfstring{bbs\_sha256\_verify}{bbs\_sha256\_verify}}
+{\footnotesize\ttfamily \#define bbs\+\_\+sha256\+\_\+verify(\begin{DoxyParamCaption}\item[{}]{... }\end{DoxyParamCaption})~bbs\+\_\+verify(bbs\+\_\+sha256\+\_\+cipher\+\_\+suite,\+\_\+\+\_\+\+VA\+\_\+\+ARGS\+\_\+\+\_\+)}
+
+Helper for SHA256 suite \begin{DoxySeeAlso}{See also}
+\doxylink{bbs_8h_a6a83a226c697161c7598e7b7a42d82b5}{bbs\+\_\+verify} 
+\end{DoxySeeAlso}
+\Hypertarget{bbs_8h_add713b263ea7b844cd7b5286e3681392}\label{bbs_8h_add713b263ea7b844cd7b5286e3681392} 
+\index{bbs.h@{bbs.h}!bbs\_shake256\_keygen@{bbs\_shake256\_keygen}}
+\index{bbs\_shake256\_keygen@{bbs\_shake256\_keygen}!bbs.h@{bbs.h}}
+\doxysubsubsection{\texorpdfstring{bbs\_shake256\_keygen}{bbs\_shake256\_keygen}}
+{\footnotesize\ttfamily \#define bbs\+\_\+shake256\+\_\+keygen(\begin{DoxyParamCaption}\item[{}]{... }\end{DoxyParamCaption})~bbs\+\_\+keygen(bbs\+\_\+shake256\+\_\+cipher\+\_\+suite,\+\_\+\+\_\+\+VA\+\_\+\+ARGS\+\_\+\+\_\+)}
+
+Helper for SHAKE256 suite \begin{DoxySeeAlso}{See also}
+\doxylink{bbs_8h_ab41b74bbfdb3dc26512935ee4ed8f59e}{bbs\+\_\+keygen} 
+\end{DoxySeeAlso}
+\Hypertarget{bbs_8h_a5a06f91ec192ea730de3af7a0936f0e2}\label{bbs_8h_a5a06f91ec192ea730de3af7a0936f0e2} 
+\index{bbs.h@{bbs.h}!bbs\_shake256\_keygen\_full@{bbs\_shake256\_keygen\_full}}
+\index{bbs\_shake256\_keygen\_full@{bbs\_shake256\_keygen\_full}!bbs.h@{bbs.h}}
+\doxysubsubsection{\texorpdfstring{bbs\_shake256\_keygen\_full}{bbs\_shake256\_keygen\_full}}
+{\footnotesize\ttfamily \#define bbs\+\_\+shake256\+\_\+keygen\+\_\+full(\begin{DoxyParamCaption}\item[{}]{... }\end{DoxyParamCaption})~bbs\+\_\+keygen\+\_\+full(bbs\+\_\+shake256\+\_\+cipher\+\_\+suite,\+\_\+\+\_\+\+VA\+\_\+\+ARGS\+\_\+\+\_\+)}
+
+Helper for SHAKE256 suite \begin{DoxySeeAlso}{See also}
+\doxylink{bbs_8h_a885516ab96f34e6c0b10bfed1e4235c0}{bbs\+\_\+keygen\+\_\+full} 
+\end{DoxySeeAlso}
+\Hypertarget{bbs_8h_a4a79cc45ab67f45286a59660d885e57b}\label{bbs_8h_a4a79cc45ab67f45286a59660d885e57b} 
+\index{bbs.h@{bbs.h}!bbs\_shake256\_proof\_gen@{bbs\_shake256\_proof\_gen}}
+\index{bbs\_shake256\_proof\_gen@{bbs\_shake256\_proof\_gen}!bbs.h@{bbs.h}}
+\doxysubsubsection{\texorpdfstring{bbs\_shake256\_proof\_gen}{bbs\_shake256\_proof\_gen}}
+{\footnotesize\ttfamily \#define bbs\+\_\+shake256\+\_\+proof\+\_\+gen(\begin{DoxyParamCaption}\item[{}]{... }\end{DoxyParamCaption})~bbs\+\_\+proof\+\_\+gen(bbs\+\_\+shake256\+\_\+cipher\+\_\+suite,\+\_\+\+\_\+\+VA\+\_\+\+ARGS\+\_\+\+\_\+)}
+
+Helper for SHAKE256 suite \begin{DoxySeeAlso}{See also}
+\doxylink{bbs_8h_a46711178bb4c66e36d6a12aea27862ac}{bbs\+\_\+proof\+\_\+gen} 
+\end{DoxySeeAlso}
+\Hypertarget{bbs_8h_a2efc844a753ad8043adeedeae1c80444}\label{bbs_8h_a2efc844a753ad8043adeedeae1c80444} 
+\index{bbs.h@{bbs.h}!bbs\_shake256\_proof\_verify@{bbs\_shake256\_proof\_verify}}
+\index{bbs\_shake256\_proof\_verify@{bbs\_shake256\_proof\_verify}!bbs.h@{bbs.h}}
+\doxysubsubsection{\texorpdfstring{bbs\_shake256\_proof\_verify}{bbs\_shake256\_proof\_verify}}
+{\footnotesize\ttfamily \#define bbs\+\_\+shake256\+\_\+proof\+\_\+verify(\begin{DoxyParamCaption}\item[{}]{... }\end{DoxyParamCaption})~bbs\+\_\+proof\+\_\+verify(bbs\+\_\+shake256\+\_\+cipher\+\_\+suite,\+\_\+\+\_\+\+VA\+\_\+\+ARGS\+\_\+\+\_\+)}
+
+Helper for SHAKE256 suite \begin{DoxySeeAlso}{See also}
+\doxylink{bbs_8h_a5ad5e92c29f1bab615dff4f6c367ffba}{bbs\+\_\+proof\+\_\+verify} 
+\end{DoxySeeAlso}
+\Hypertarget{bbs_8h_a47553318871a1a91a2c992b1744900ec}\label{bbs_8h_a47553318871a1a91a2c992b1744900ec} 
+\index{bbs.h@{bbs.h}!bbs\_shake256\_sign@{bbs\_shake256\_sign}}
+\index{bbs\_shake256\_sign@{bbs\_shake256\_sign}!bbs.h@{bbs.h}}
+\doxysubsubsection{\texorpdfstring{bbs\_shake256\_sign}{bbs\_shake256\_sign}}
+{\footnotesize\ttfamily \#define bbs\+\_\+shake256\+\_\+sign(\begin{DoxyParamCaption}\item[{}]{... }\end{DoxyParamCaption})~bbs\+\_\+sign(bbs\+\_\+shake256\+\_\+cipher\+\_\+suite,\+\_\+\+\_\+\+VA\+\_\+\+ARGS\+\_\+\+\_\+)}
+
+Helper for SHAKE256 suite \begin{DoxySeeAlso}{See also}
+\doxylink{bbs_8h_a04e904f88dee4daa28f8731fbcb06774}{bbs\+\_\+sign} 
+\end{DoxySeeAlso}
+\Hypertarget{bbs_8h_a7a394c09c3861b199b391d65efbc5013}\label{bbs_8h_a7a394c09c3861b199b391d65efbc5013} 
+\index{bbs.h@{bbs.h}!bbs\_shake256\_sk\_to\_pk@{bbs\_shake256\_sk\_to\_pk}}
+\index{bbs\_shake256\_sk\_to\_pk@{bbs\_shake256\_sk\_to\_pk}!bbs.h@{bbs.h}}
+\doxysubsubsection{\texorpdfstring{bbs\_shake256\_sk\_to\_pk}{bbs\_shake256\_sk\_to\_pk}}
+{\footnotesize\ttfamily \#define bbs\+\_\+shake256\+\_\+sk\+\_\+to\+\_\+pk(\begin{DoxyParamCaption}\item[{}]{... }\end{DoxyParamCaption})~bbs\+\_\+sk\+\_\+to\+\_\+pk(bbs\+\_\+shake256\+\_\+cipher\+\_\+suite,\+\_\+\+\_\+\+VA\+\_\+\+ARGS\+\_\+\+\_\+)}
+
+Helper for SHAKE256 suite \begin{DoxySeeAlso}{See also}
+\doxylink{bbs_8h_a470821f71af30c12b6e7c6d2532dc504}{bbs\+\_\+sk\+\_\+to\+\_\+pk} 
+\end{DoxySeeAlso}
+\Hypertarget{bbs_8h_a8c0bdd28b4f870bc9054e55a47f9b29f}\label{bbs_8h_a8c0bdd28b4f870bc9054e55a47f9b29f} 
+\index{bbs.h@{bbs.h}!bbs\_shake256\_verify@{bbs\_shake256\_verify}}
+\index{bbs\_shake256\_verify@{bbs\_shake256\_verify}!bbs.h@{bbs.h}}
+\doxysubsubsection{\texorpdfstring{bbs\_shake256\_verify}{bbs\_shake256\_verify}}
+{\footnotesize\ttfamily \#define bbs\+\_\+shake256\+\_\+verify(\begin{DoxyParamCaption}\item[{}]{... }\end{DoxyParamCaption})~bbs\+\_\+verify(bbs\+\_\+shake256\+\_\+cipher\+\_\+suite,\+\_\+\+\_\+\+VA\+\_\+\+ARGS\+\_\+\+\_\+)}
+
+Helper for SHAKE256 suite \begin{DoxySeeAlso}{See also}
+\doxylink{bbs_8h_a6a83a226c697161c7598e7b7a42d82b5}{bbs\+\_\+verify} 
+\end{DoxySeeAlso}
+
+
+\doxysubsection{Typedef Documentation}
+\Hypertarget{bbs_8h_a7c890f8c0037fc85d1c711eace87d48b}\label{bbs_8h_a7c890f8c0037fc85d1c711eace87d48b} 
+\index{bbs.h@{bbs.h}!bbs\_cipher\_suite\_t@{bbs\_cipher\_suite\_t}}
+\index{bbs\_cipher\_suite\_t@{bbs\_cipher\_suite\_t}!bbs.h@{bbs.h}}
+\doxysubsubsection{\texorpdfstring{bbs\_cipher\_suite\_t}{bbs\_cipher\_suite\_t}}
+{\footnotesize\ttfamily typedef struct bbs\+\_\+cipher\+\_\+suite \mbox{\hyperlink{bbs_8h_a7c890f8c0037fc85d1c711eace87d48b}{bbs\+\_\+cipher\+\_\+suite\+\_\+t}}}
+
+
+
+BBS cipher suite. 
+
+The cipher suite. Is one of \doxylink{bbs_8h_a4a423545eebbd2afbd2fce8f168b5aeb}{bbs\+\_\+sha256\+\_\+cipher\+\_\+suite} or \doxylink{bbs_8h_a040795ea1a4f45b5f9471e7d913f85d7}{bbs\+\_\+shake256\+\_\+cipher\+\_\+suite} \Hypertarget{bbs_8h_a10f332e56f89aff4e812674de7e2a07d}\label{bbs_8h_a10f332e56f89aff4e812674de7e2a07d} 
+\index{bbs.h@{bbs.h}!bbs\_public\_key@{bbs\_public\_key}}
+\index{bbs\_public\_key@{bbs\_public\_key}!bbs.h@{bbs.h}}
+\doxysubsubsection{\texorpdfstring{bbs\_public\_key}{bbs\_public\_key}}
+{\footnotesize\ttfamily typedef uint8\+\_\+t bbs\+\_\+public\+\_\+key\mbox{[}\mbox{\hyperlink{bbs_8h_a304c33827a522616b24e8527805edd46}{BBS\+\_\+\+PK\+\_\+\+LEN}}\mbox{]}}
+
+
+
+BBS public key. 
+
+The public key is an octet string of length \doxylink{bbs_8h_a304c33827a522616b24e8527805edd46}{BBS\+\_\+\+PK\+\_\+\+LEN}. \Hypertarget{bbs_8h_ac89498ea1c6e2e9a477430cc9395b3ec}\label{bbs_8h_ac89498ea1c6e2e9a477430cc9395b3ec} 
+\index{bbs.h@{bbs.h}!bbs\_secret\_key@{bbs\_secret\_key}}
+\index{bbs\_secret\_key@{bbs\_secret\_key}!bbs.h@{bbs.h}}
+\doxysubsubsection{\texorpdfstring{bbs\_secret\_key}{bbs\_secret\_key}}
+{\footnotesize\ttfamily typedef uint8\+\_\+t bbs\+\_\+secret\+\_\+key\mbox{[}\mbox{\hyperlink{bbs_8h_a862a7fa5d29e2ee4fa09f841fea58926}{BBS\+\_\+\+SK\+\_\+\+LEN}}\mbox{]}}
+
+
+
+BBS secret key. 
+
+The secret key is an octet string of length \doxylink{bbs_8h_a862a7fa5d29e2ee4fa09f841fea58926}{BBS\+\_\+\+SK\+\_\+\+LEN}. \Hypertarget{bbs_8h_a76a4a8d263f86a1ecf326bcd4eb9e475}\label{bbs_8h_a76a4a8d263f86a1ecf326bcd4eb9e475} 
+\index{bbs.h@{bbs.h}!bbs\_signature@{bbs\_signature}}
+\index{bbs\_signature@{bbs\_signature}!bbs.h@{bbs.h}}
+\doxysubsubsection{\texorpdfstring{bbs\_signature}{bbs\_signature}}
+{\footnotesize\ttfamily typedef uint8\+\_\+t bbs\+\_\+signature\mbox{[}\mbox{\hyperlink{bbs_8h_a9d099bae5cf774863fa1047b1a39f228}{BBS\+\_\+\+SIG\+\_\+\+LEN}}\mbox{]}}
+
+
+
+BBS signature. 
+
+The BBS signature is an octet string of length \doxylink{bbs_8h_a9d099bae5cf774863fa1047b1a39f228}{BBS\+\_\+\+SIG\+\_\+\+LEN}. 
+
+\doxysubsection{Function Documentation}
+\Hypertarget{bbs_8h_a996edf3d0387958c2c53fdb7f4ce9520}\label{bbs_8h_a996edf3d0387958c2c53fdb7f4ce9520} 
+\index{bbs.h@{bbs.h}!bbs\_deinit@{bbs\_deinit}}
+\index{bbs\_deinit@{bbs\_deinit}!bbs.h@{bbs.h}}
+\doxysubsubsection{\texorpdfstring{bbs\_deinit()}{bbs\_deinit()}}
+{\footnotesize\ttfamily int bbs\+\_\+deinit (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Subsystem cleanup Call this function on global scope exit.
+
+\begin{DoxyReturn}{Returns}
+\doxylink{bbs_8h_a2753252c37ca6d31b89ed291edee0329}{BBS\+\_\+\+OK} on success. 
+\end{DoxyReturn}
+\Hypertarget{bbs_8h_aab40dbd797c0e8ae60f453436fc6bc46}\label{bbs_8h_aab40dbd797c0e8ae60f453436fc6bc46} 
+\index{bbs.h@{bbs.h}!bbs\_init@{bbs\_init}}
+\index{bbs\_init@{bbs\_init}!bbs.h@{bbs.h}}
+\doxysubsubsection{\texorpdfstring{bbs\_init()}{bbs\_init()}}
+{\footnotesize\ttfamily int bbs\+\_\+init (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Subsystem initialization Call this function before any other API. Make sure to call \doxylink{bbs_8h_a996edf3d0387958c2c53fdb7f4ce9520}{bbs\+\_\+deinit} when done.
+
+\begin{DoxyReturn}{Returns}
+\doxylink{bbs_8h_a2753252c37ca6d31b89ed291edee0329}{BBS\+\_\+\+OK} on success. 
+\end{DoxyReturn}
+\Hypertarget{bbs_8h_ab41b74bbfdb3dc26512935ee4ed8f59e}\label{bbs_8h_ab41b74bbfdb3dc26512935ee4ed8f59e} 
+\index{bbs.h@{bbs.h}!bbs\_keygen@{bbs\_keygen}}
+\index{bbs\_keygen@{bbs\_keygen}!bbs.h@{bbs.h}}
+\doxysubsubsection{\texorpdfstring{bbs\_keygen()}{bbs\_keygen()}}
+{\footnotesize\ttfamily int bbs\+\_\+keygen (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{bbs_8h_a7c890f8c0037fc85d1c711eace87d48b}{bbs\+\_\+cipher\+\_\+suite\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{cipher\+\_\+suite,  }\item[{\mbox{\hyperlink{bbs_8h_ac89498ea1c6e2e9a477430cc9395b3ec}{bbs\+\_\+secret\+\_\+key}}}]{sk,  }\item[{const uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{key\+\_\+material,  }\item[{uint16\+\_\+t}]{key\+\_\+material\+\_\+len,  }\item[{const uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{key\+\_\+info,  }\item[{uint16\+\_\+t}]{key\+\_\+info\+\_\+len,  }\item[{const uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{key\+\_\+dst,  }\item[{uint8\+\_\+t}]{key\+\_\+dst\+\_\+len }\end{DoxyParamCaption})}
+
+Generate a public/private key pair
+
+For security, key\+\_\+material MUST be random and infeasible to guess, e.\+g. generated by a trusted source of randomness and with enough entropy. See \mbox{[}RFC4086\mbox{]} for suggestions on generating randomness. {\ttfamily key\+\_\+material} MUST be at least 32 bytes long, but it MAY be longer.
+
+
+\begin{DoxyParams}{Parameters}
+{\em cipher\+\_\+suite} & the cipher suite to use. See \doxylink{bbs_8h_a7c890f8c0037fc85d1c711eace87d48b}{bbs\+\_\+cipher\+\_\+suite\+\_\+t}. \\
+\hline
+{\em sk} & where to store the secret key \\
+\hline
+{\em key\+\_\+material} & a secret octet string. See requirements above. \\
+\hline
+{\em key\+\_\+material\+\_\+len} & the length of {\ttfamily key\+\_\+material} \\
+\hline
+{\em key\+\_\+info} & used to derive distinct keys from the same key material. (may be NULL) \\
+\hline
+{\em key\+\_\+info\+\_\+len} & the length of {\ttfamily key\+\_\+info} \\
+\hline
+{\em key\+\_\+dst} & an octet string representing the domain separation tag. May be NULL in which case it to the octet string {\ttfamily ciphersuite\+\_\+id} \texorpdfstring{$\vert$}{|}\texorpdfstring{$\vert$}{|} "{}\+KEYGEN\+\_\+\+DST\+\_\+"{}. \\
+\hline
+{\em key\+\_\+dst\+\_\+len} & the length of {\ttfamily key\+\_\+dst} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 on success. 
+\end{DoxyReturn}
+\Hypertarget{bbs_8h_a885516ab96f34e6c0b10bfed1e4235c0}\label{bbs_8h_a885516ab96f34e6c0b10bfed1e4235c0} 
+\index{bbs.h@{bbs.h}!bbs\_keygen\_full@{bbs\_keygen\_full}}
+\index{bbs\_keygen\_full@{bbs\_keygen\_full}!bbs.h@{bbs.h}}
+\doxysubsubsection{\texorpdfstring{bbs\_keygen\_full()}{bbs\_keygen\_full()}}
+{\footnotesize\ttfamily int bbs\+\_\+keygen\+\_\+full (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{bbs_8h_a7c890f8c0037fc85d1c711eace87d48b}{bbs\+\_\+cipher\+\_\+suite\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{cipher\+\_\+suite,  }\item[{\mbox{\hyperlink{bbs_8h_ac89498ea1c6e2e9a477430cc9395b3ec}{bbs\+\_\+secret\+\_\+key}}}]{sk,  }\item[{\mbox{\hyperlink{bbs_8h_a10f332e56f89aff4e812674de7e2a07d}{bbs\+\_\+public\+\_\+key}}}]{pk }\end{DoxyParamCaption})}
+
+Generate a public/private key pair. This is a convienience function for \doxylink{bbs_8h_ab41b74bbfdb3dc26512935ee4ed8f59e}{bbs\+\_\+keygen} in which the {\ttfamily key\+\_\+dst} and {\ttfamily key\+\_\+info} parameters are the empty string.
+
+
+\begin{DoxyParams}{Parameters}
+{\em cipher\+\_\+suite} & the cipher suite to use. See \doxylink{bbs_8h_a7c890f8c0037fc85d1c711eace87d48b}{bbs\+\_\+cipher\+\_\+suite\+\_\+t}. \\
+\hline
+{\em sk} & where to store the secret key \\
+\hline
+{\em pk} & where to store the public key \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 on success. 
+\end{DoxyReturn}
+\Hypertarget{bbs_8h_a46711178bb4c66e36d6a12aea27862ac}\label{bbs_8h_a46711178bb4c66e36d6a12aea27862ac} 
+\index{bbs.h@{bbs.h}!bbs\_proof\_gen@{bbs\_proof\_gen}}
+\index{bbs\_proof\_gen@{bbs\_proof\_gen}!bbs.h@{bbs.h}}
+\doxysubsubsection{\texorpdfstring{bbs\_proof\_gen()}{bbs\_proof\_gen()}}
+{\footnotesize\ttfamily int bbs\+\_\+proof\+\_\+gen (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{bbs_8h_a7c890f8c0037fc85d1c711eace87d48b}{bbs\+\_\+cipher\+\_\+suite\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{cipher\+\_\+suite,  }\item[{const \mbox{\hyperlink{bbs_8h_a10f332e56f89aff4e812674de7e2a07d}{bbs\+\_\+public\+\_\+key}}}]{pk,  }\item[{const \mbox{\hyperlink{bbs_8h_a76a4a8d263f86a1ecf326bcd4eb9e475}{bbs\+\_\+signature}}}]{signature,  }\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{proof,  }\item[{const uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{header,  }\item[{uint64\+\_\+t}]{header\+\_\+len,  }\item[{const uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{presentation\+\_\+header,  }\item[{uint64\+\_\+t}]{presentation\+\_\+header\+\_\+len,  }\item[{const uint64\+\_\+t \texorpdfstring{$\ast$}{*}}]{disclosed\+\_\+indexes,  }\item[{uint64\+\_\+t}]{disclosed\+\_\+indexes\+\_\+len,  }\item[{uint64\+\_\+t}]{num\+\_\+messages,  }\item[{}]{... }\end{DoxyParamCaption})}
+
+
+
+Create a proof over a signature. 
+
+The {\ttfamily num\+\_\+messages} is followed by this amount of varargs that consist of a tuple of uint8\+\_\+t\texorpdfstring{$\ast$}{*} pointers to octet strings followed by a uint32\+\_\+t length indicator.
+
+
+\begin{DoxyParams}{Parameters}
+{\em cipher\+\_\+suite} & the cipher suite to use. See \doxylink{bbs_8h_a7c890f8c0037fc85d1c711eace87d48b}{bbs\+\_\+cipher\+\_\+suite\+\_\+t}. \\
+\hline
+{\em pk} & public key. \\
+\hline
+{\em signature} & the signature to use. \\
+\hline
+{\em proof} & pointer to the proof. Must be allocated by caller as octet string with size \doxylink{bbs_8h_a4b33fe2f3edee626c07a87f61062e782}{BBS\+\_\+\+PROOF\+\_\+\+LEN(\+N)} where N = ({\ttfamily num\+\_\+messages} -\/ {\ttfamily disclosed\+\_\+indexes\+\_\+len}). \\
+\hline
+{\em header} & an octet string containing context and application specific information. If not supplied, it defaults to the empty octet string ("{}"{}). \\
+\hline
+{\em header\+\_\+len} & the length of the message header. \\
+\hline
+{\em presentation\+\_\+header} & an octet string containing the presentation header. If not supplied, it defaults to the empty octet string ("{}"{}). \\
+\hline
+{\em presentation\+\_\+header\+\_\+len} & the length of the proof presentation header. \\
+\hline
+{\em disclosed\+\_\+indexes} & a vector of unsigned integers in ascending order. Indexes of disclosed messages. If not supplied, it defaults to the empty array ("{}()"{}). \\
+\hline
+{\em disclosed\+\_\+indexes\+\_\+len} & the length of {\ttfamily disclosed\+\_\+indexes} array. \\
+\hline
+{\em num\+\_\+messages} & the number of messages followed by in varargs. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{bbs_8h_a2753252c37ca6d31b89ed291edee0329}{BBS\+\_\+\+OK} on success. 
+\end{DoxyReturn}
+\Hypertarget{bbs_8h_a5ad5e92c29f1bab615dff4f6c367ffba}\label{bbs_8h_a5ad5e92c29f1bab615dff4f6c367ffba} 
+\index{bbs.h@{bbs.h}!bbs\_proof\_verify@{bbs\_proof\_verify}}
+\index{bbs\_proof\_verify@{bbs\_proof\_verify}!bbs.h@{bbs.h}}
+\doxysubsubsection{\texorpdfstring{bbs\_proof\_verify()}{bbs\_proof\_verify()}}
+{\footnotesize\ttfamily int bbs\+\_\+proof\+\_\+verify (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{bbs_8h_a7c890f8c0037fc85d1c711eace87d48b}{bbs\+\_\+cipher\+\_\+suite\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{cipher\+\_\+suite,  }\item[{const \mbox{\hyperlink{bbs_8h_a10f332e56f89aff4e812674de7e2a07d}{bbs\+\_\+public\+\_\+key}}}]{pk,  }\item[{const uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{proof,  }\item[{uint64\+\_\+t}]{proof\+\_\+len,  }\item[{const uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{header,  }\item[{uint64\+\_\+t}]{header\+\_\+len,  }\item[{const uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{presentation\+\_\+header,  }\item[{uint64\+\_\+t}]{presentation\+\_\+header\+\_\+len,  }\item[{const uint64\+\_\+t \texorpdfstring{$\ast$}{*}}]{disclosed\+\_\+indexes,  }\item[{uint64\+\_\+t}]{disclosed\+\_\+indexes\+\_\+len,  }\item[{uint64\+\_\+t}]{num\+\_\+messages,  }\item[{}]{... }\end{DoxyParamCaption})}
+
+
+
+Verify a proof over a signature. 
+
+The {\ttfamily num\+\_\+messages} is followed by this amount of varargs that consist of a tuple of uint8\+\_\+t\texorpdfstring{$\ast$}{*} pointers to octet strings followed by a uint32\+\_\+t length indicator.
+
+
+\begin{DoxyParams}{Parameters}
+{\em cipher\+\_\+suite} & the cipher suite to use. See \doxylink{bbs_8h_a7c890f8c0037fc85d1c711eace87d48b}{bbs\+\_\+cipher\+\_\+suite\+\_\+t}. \\
+\hline
+{\em pk} & public key. \\
+\hline
+{\em proof} & an octet string of the form outputted by \doxylink{bbs_8h_a46711178bb4c66e36d6a12aea27862ac}{bbs\+\_\+proof\+\_\+gen}. \\
+\hline
+{\em proof\+\_\+len} & length of {\ttfamily proof}. \\
+\hline
+{\em header} & an octet string containing context and application specific information. If not supplied, it defaults to the empty octet string ("{}"{}). \\
+\hline
+{\em header\+\_\+len} & the length of the message header. \\
+\hline
+{\em presentation\+\_\+header} & an octet string containing the presentation header. If not supplied, it defaults to the empty octet string ("{}"{}). \\
+\hline
+{\em presentation\+\_\+header\+\_\+len} & the length of the proof presentation header. \\
+\hline
+{\em disclosed\+\_\+indexes} & a vector of unsigned integers in ascending order. Indexes of disclosed messages. If not supplied, it defaults to the empty array ("{}()"{}). \\
+\hline
+{\em disclosed\+\_\+indexes\+\_\+len} & the length of {\ttfamily disclosed\+\_\+indexes} array. \\
+\hline
+{\em num\+\_\+messages} & the number of messages followed by in varargs. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{bbs_8h_a2753252c37ca6d31b89ed291edee0329}{BBS\+\_\+\+OK} on success. 
+\end{DoxyReturn}
+\Hypertarget{bbs_8h_a04e904f88dee4daa28f8731fbcb06774}\label{bbs_8h_a04e904f88dee4daa28f8731fbcb06774} 
+\index{bbs.h@{bbs.h}!bbs\_sign@{bbs\_sign}}
+\index{bbs\_sign@{bbs\_sign}!bbs.h@{bbs.h}}
+\doxysubsubsection{\texorpdfstring{bbs\_sign()}{bbs\_sign()}}
+{\footnotesize\ttfamily int bbs\+\_\+sign (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{bbs_8h_a7c890f8c0037fc85d1c711eace87d48b}{bbs\+\_\+cipher\+\_\+suite\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{cipher\+\_\+suite,  }\item[{const \mbox{\hyperlink{bbs_8h_ac89498ea1c6e2e9a477430cc9395b3ec}{bbs\+\_\+secret\+\_\+key}}}]{sk,  }\item[{const \mbox{\hyperlink{bbs_8h_a10f332e56f89aff4e812674de7e2a07d}{bbs\+\_\+public\+\_\+key}}}]{pk,  }\item[{\mbox{\hyperlink{bbs_8h_a76a4a8d263f86a1ecf326bcd4eb9e475}{bbs\+\_\+signature}}}]{signature,  }\item[{const uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{header,  }\item[{uint64\+\_\+t}]{header\+\_\+len,  }\item[{uint64\+\_\+t}]{num\+\_\+messages,  }\item[{}]{... }\end{DoxyParamCaption})}
+
+
+
+Create a signature. 
+
+The {\ttfamily num\+\_\+messages} is followed by this amount of varargs that consist of a tuple of uint8\+\_\+t\texorpdfstring{$\ast$}{*} pointers to octet strings followed by a uint32\+\_\+t length indicator.
+
+
+\begin{DoxyParams}{Parameters}
+{\em cipher\+\_\+suite} & the cipher suite to use. See \doxylink{bbs_8h_a7c890f8c0037fc85d1c711eace87d48b}{bbs\+\_\+cipher\+\_\+suite\+\_\+t}. \\
+\hline
+{\em sk} & secret key. \\
+\hline
+{\em pk} & public key. \\
+\hline
+{\em signature} & where to store the signature. \\
+\hline
+{\em header} & an octet string containing context and application specific information. If not supplied, it defaults to the empty octet string ("{}"{}). \\
+\hline
+{\em header\+\_\+len} & the length of the message header. \\
+\hline
+{\em num\+\_\+messages} & the number of messages as octet strings followed in varargs. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{bbs_8h_a2753252c37ca6d31b89ed291edee0329}{BBS\+\_\+\+OK} on success. 
+\end{DoxyReturn}
+\Hypertarget{bbs_8h_a470821f71af30c12b6e7c6d2532dc504}\label{bbs_8h_a470821f71af30c12b6e7c6d2532dc504} 
+\index{bbs.h@{bbs.h}!bbs\_sk\_to\_pk@{bbs\_sk\_to\_pk}}
+\index{bbs\_sk\_to\_pk@{bbs\_sk\_to\_pk}!bbs.h@{bbs.h}}
+\doxysubsubsection{\texorpdfstring{bbs\_sk\_to\_pk()}{bbs\_sk\_to\_pk()}}
+{\footnotesize\ttfamily int bbs\+\_\+sk\+\_\+to\+\_\+pk (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{bbs_8h_a7c890f8c0037fc85d1c711eace87d48b}{bbs\+\_\+cipher\+\_\+suite\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{cipher\+\_\+suite,  }\item[{const \mbox{\hyperlink{bbs_8h_ac89498ea1c6e2e9a477430cc9395b3ec}{bbs\+\_\+secret\+\_\+key}}}]{sk,  }\item[{\mbox{\hyperlink{bbs_8h_a10f332e56f89aff4e812674de7e2a07d}{bbs\+\_\+public\+\_\+key}}}]{pk }\end{DoxyParamCaption})}
+
+Generate public key from secret key. Internally generates randomness for {\ttfamily key\+\_\+material} and calls \doxylink{bbs_8h_ab41b74bbfdb3dc26512935ee4ed8f59e}{bbs\+\_\+keygen} with default parameters.
+
+
+\begin{DoxyParams}{Parameters}
+{\em cipher\+\_\+suite} & the cipher suite to use. See \doxylink{bbs_8h_a7c890f8c0037fc85d1c711eace87d48b}{bbs\+\_\+cipher\+\_\+suite\+\_\+t}. \\
+\hline
+{\em sk} & secret key. \\
+\hline
+{\em pk} & public key. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{bbs_8h_a2753252c37ca6d31b89ed291edee0329}{BBS\+\_\+\+OK} on success. 
+\end{DoxyReturn}
+\Hypertarget{bbs_8h_a6a83a226c697161c7598e7b7a42d82b5}\label{bbs_8h_a6a83a226c697161c7598e7b7a42d82b5} 
+\index{bbs.h@{bbs.h}!bbs\_verify@{bbs\_verify}}
+\index{bbs\_verify@{bbs\_verify}!bbs.h@{bbs.h}}
+\doxysubsubsection{\texorpdfstring{bbs\_verify()}{bbs\_verify()}}
+{\footnotesize\ttfamily int bbs\+\_\+verify (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{bbs_8h_a7c890f8c0037fc85d1c711eace87d48b}{bbs\+\_\+cipher\+\_\+suite\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{cipher\+\_\+suite,  }\item[{const \mbox{\hyperlink{bbs_8h_a10f332e56f89aff4e812674de7e2a07d}{bbs\+\_\+public\+\_\+key}}}]{pk,  }\item[{const \mbox{\hyperlink{bbs_8h_a76a4a8d263f86a1ecf326bcd4eb9e475}{bbs\+\_\+signature}}}]{signature,  }\item[{const uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{header,  }\item[{uint64\+\_\+t}]{header\+\_\+len,  }\item[{uint64\+\_\+t}]{num\+\_\+messages,  }\item[{}]{... }\end{DoxyParamCaption})}
+
+
+
+Verify a signature. 
+
+The {\ttfamily num\+\_\+messages} is followed by this amount of varargs that consist of a tuple of uint8\+\_\+t\texorpdfstring{$\ast$}{*} pointers to octet strings followed by a uint32\+\_\+t length indicator.
+
+
+\begin{DoxyParams}{Parameters}
+{\em cipher\+\_\+suite} & the cipher suite to use. See \doxylink{bbs_8h_a7c890f8c0037fc85d1c711eace87d48b}{bbs\+\_\+cipher\+\_\+suite\+\_\+t}. \\
+\hline
+{\em pk} & public key. \\
+\hline
+{\em signature} & the signature to verify. \\
+\hline
+{\em header} & an octet string containing context and application specific information. If not supplied, it defaults to the empty octet string ("{}"{}). \\
+\hline
+{\em header\+\_\+len} & the length of the message header. \\
+\hline
+{\em num\+\_\+messages} & the number of messages followed by in varargs. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{bbs_8h_a2753252c37ca6d31b89ed291edee0329}{BBS\+\_\+\+OK} on success. 
+\end{DoxyReturn}
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{bbs_8h_a4a423545eebbd2afbd2fce8f168b5aeb}\label{bbs_8h_a4a423545eebbd2afbd2fce8f168b5aeb} 
+\index{bbs.h@{bbs.h}!bbs\_sha256\_cipher\_suite@{bbs\_sha256\_cipher\_suite}}
+\index{bbs\_sha256\_cipher\_suite@{bbs\_sha256\_cipher\_suite}!bbs.h@{bbs.h}}
+\doxysubsubsection{\texorpdfstring{bbs\_sha256\_cipher\_suite}{bbs\_sha256\_cipher\_suite}}
+{\footnotesize\ttfamily \mbox{\hyperlink{bbs_8h_a7c890f8c0037fc85d1c711eace87d48b}{bbs\+\_\+cipher\+\_\+suite\+\_\+t}}\texorpdfstring{$\ast$}{*} bbs\+\_\+sha256\+\_\+cipher\+\_\+suite\hspace{0.3cm}{\ttfamily [extern]}}
+
+The SHA256 cipher suite
+
+\begin{DoxySeeAlso}{See also}
+\doxylink{bbs_8h_a7c890f8c0037fc85d1c711eace87d48b}{bbs\+\_\+cipher\+\_\+suite\+\_\+t} 
+\end{DoxySeeAlso}
+\Hypertarget{bbs_8h_a040795ea1a4f45b5f9471e7d913f85d7}\label{bbs_8h_a040795ea1a4f45b5f9471e7d913f85d7} 
+\index{bbs.h@{bbs.h}!bbs\_shake256\_cipher\_suite@{bbs\_shake256\_cipher\_suite}}
+\index{bbs\_shake256\_cipher\_suite@{bbs\_shake256\_cipher\_suite}!bbs.h@{bbs.h}}
+\doxysubsubsection{\texorpdfstring{bbs\_shake256\_cipher\_suite}{bbs\_shake256\_cipher\_suite}}
+{\footnotesize\ttfamily \mbox{\hyperlink{bbs_8h_a7c890f8c0037fc85d1c711eace87d48b}{bbs\+\_\+cipher\+\_\+suite\+\_\+t}}\texorpdfstring{$\ast$}{*} bbs\+\_\+shake256\+\_\+cipher\+\_\+suite\hspace{0.3cm}{\ttfamily [extern]}}
+
+The SHAKE256 cipher suite
+
+\begin{DoxySeeAlso}{See also}
+\doxylink{bbs_8h_a7c890f8c0037fc85d1c711eace87d48b}{bbs\+\_\+cipher\+\_\+suite\+\_\+t} 
+\end{DoxySeeAlso}

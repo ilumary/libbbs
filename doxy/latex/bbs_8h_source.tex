@@ -1,0 +1,154 @@
+\doxysection{bbs.\+h}
+\hypertarget{bbs_8h_source}{}\label{bbs_8h_source}\index{include/bbs.h@{include/bbs.h}}
+\mbox{\hyperlink{bbs_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#ifndef\ BBS\_H}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#define\ BBS\_H}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <stdint.h>}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ <stdarg.h>}}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#define\ BBS\_SK\_LEN\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 32}}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\#define\ BBS\_PK\_LEN\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 96}}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00033\ \textcolor{preprocessor}{\#define\ BBS\_SIG\_LEN\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 80}}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00038\ \textcolor{preprocessor}{\#define\ BBS\_PROOF\_BASE\_LEN\ \ \ \ \ \ \ \ \ \ \ \ \ 272}}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00043\ \textcolor{preprocessor}{\#define\ BBS\_PROOF\_UD\_ELEM\_LEN\ \ \ \ \ \ \ \ \ \ 32}}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00050\ \textcolor{preprocessor}{\#define\ BBS\_PROOF\_LEN(num\_undisclosed)\ (BBS\_PROOF\_BASE\_LEN\ +\ num\_undisclosed\ *\ BBS\_PROOF\_UD\_ELEM\_LEN\ \(\backslash\)}}
+\DoxyCodeLine{00051\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ )}}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00056\ \textcolor{preprocessor}{\#define\ BBS\_OK\ \ \ \ 0}}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00061\ \textcolor{preprocessor}{\#define\ BBS\_ERROR\ 1}}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00069\ \textcolor{keyword}{typedef}\ uint8\_t\ \ \mbox{\hyperlink{bbs_8h_ac89498ea1c6e2e9a477430cc9395b3ec}{bbs\_secret\_key}}[\mbox{\hyperlink{bbs_8h_a862a7fa5d29e2ee4fa09f841fea58926}{BBS\_SK\_LEN}}];}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00077\ \textcolor{keyword}{typedef}\ uint8\_t\ \ \mbox{\hyperlink{bbs_8h_a10f332e56f89aff4e812674de7e2a07d}{bbs\_public\_key}}[\mbox{\hyperlink{bbs_8h_a304c33827a522616b24e8527805edd46}{BBS\_PK\_LEN}}];}
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00085\ \textcolor{keyword}{typedef}\ uint8\_t\ \ \mbox{\hyperlink{bbs_8h_a76a4a8d263f86a1ecf326bcd4eb9e475}{bbs\_signature}}[\mbox{\hyperlink{bbs_8h_a9d099bae5cf774863fa1047b1a39f228}{BBS\_SIG\_LEN}}];}
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00093\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }bbs\_cipher\_suite\ \mbox{\hyperlink{bbs_8h_a7c890f8c0037fc85d1c711eace87d48b}{bbs\_cipher\_suite\_t}};}
+\DoxyCodeLine{00094\ }
+\DoxyCodeLine{00102\ \textcolor{keywordtype}{int}}
+\DoxyCodeLine{00103\ \mbox{\hyperlink{bbs_8h_aab40dbd797c0e8ae60f453436fc6bc46}{bbs\_init}}\ (\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00104\ }
+\DoxyCodeLine{00105\ }
+\DoxyCodeLine{00112\ \textcolor{keywordtype}{int}}
+\DoxyCodeLine{00113\ \mbox{\hyperlink{bbs_8h_a996edf3d0387958c2c53fdb7f4ce9520}{bbs\_deinit}}\ (\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00114\ }
+\DoxyCodeLine{00115\ \textcolor{comment}{//\ Key\ Generation}}
+\DoxyCodeLine{00116\ }
+\DoxyCodeLine{00128\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{bbs_8h_a885516ab96f34e6c0b10bfed1e4235c0}{bbs\_keygen\_full}}\ (}
+\DoxyCodeLine{00129\ \ \ \ \ \mbox{\hyperlink{bbs_8h_a7c890f8c0037fc85d1c711eace87d48b}{bbs\_cipher\_suite\_t}}\ *cipher\_suite,}
+\DoxyCodeLine{00130\ \ \ \ \ \mbox{\hyperlink{bbs_8h_ac89498ea1c6e2e9a477430cc9395b3ec}{bbs\_secret\_key}}\ \ \ \ \ \ sk,}
+\DoxyCodeLine{00131\ \ \ \ \ \mbox{\hyperlink{bbs_8h_a10f332e56f89aff4e812674de7e2a07d}{bbs\_public\_key}}\ \ \ \ \ \ pk}
+\DoxyCodeLine{00132\ \ \ \ \ );}
+\DoxyCodeLine{00133\ }
+\DoxyCodeLine{00134\ }
+\DoxyCodeLine{00155\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{bbs_8h_ab41b74bbfdb3dc26512935ee4ed8f59e}{bbs\_keygen}}\ (}
+\DoxyCodeLine{00156\ \ \ \ \ \mbox{\hyperlink{bbs_8h_a7c890f8c0037fc85d1c711eace87d48b}{bbs\_cipher\_suite\_t}}\ *cipher\_suite,}
+\DoxyCodeLine{00157\ \ \ \ \ \mbox{\hyperlink{bbs_8h_ac89498ea1c6e2e9a477430cc9395b3ec}{bbs\_secret\_key}}\ \ \ \ \ \ sk,}
+\DoxyCodeLine{00158\ \ \ \ \ \textcolor{keyword}{const}\ uint8\_t\ \ \ \ \ \ *key\_material,}
+\DoxyCodeLine{00159\ \ \ \ \ uint16\_t\ \ \ \ \ \ \ \ \ \ \ \ key\_material\_len,}
+\DoxyCodeLine{00160\ \ \ \ \ \textcolor{keyword}{const}\ uint8\_t\ \ \ \ \ \ *key\_info,}
+\DoxyCodeLine{00161\ \ \ \ \ uint16\_t\ \ \ \ \ \ \ \ \ \ \ \ key\_info\_len,}
+\DoxyCodeLine{00162\ \ \ \ \ \textcolor{keyword}{const}\ uint8\_t\ \ \ \ \ \ *key\_dst,}
+\DoxyCodeLine{00163\ \ \ \ \ uint8\_t\ \ \ \ \ \ \ \ \ \ \ \ \ key\_dst\_len}
+\DoxyCodeLine{00164\ \ \ \ \ );}
+\DoxyCodeLine{00165\ }
+\DoxyCodeLine{00176\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{bbs_8h_a470821f71af30c12b6e7c6d2532dc504}{bbs\_sk\_to\_pk}}\ (}
+\DoxyCodeLine{00177\ \ \ \ \ \mbox{\hyperlink{bbs_8h_a7c890f8c0037fc85d1c711eace87d48b}{bbs\_cipher\_suite\_t}}\ \ \ *cipher\_suite,}
+\DoxyCodeLine{00178\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{bbs_8h_ac89498ea1c6e2e9a477430cc9395b3ec}{bbs\_secret\_key}}\ \ sk,}
+\DoxyCodeLine{00179\ \ \ \ \ \mbox{\hyperlink{bbs_8h_a10f332e56f89aff4e812674de7e2a07d}{bbs\_public\_key}}\ \ \ \ \ \ \ \ pk}
+\DoxyCodeLine{00180\ \ \ \ \ );}
+\DoxyCodeLine{00181\ }
+\DoxyCodeLine{00201\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{bbs_8h_a04e904f88dee4daa28f8731fbcb06774}{bbs\_sign}}\ (}
+\DoxyCodeLine{00202\ \ \ \ \ \mbox{\hyperlink{bbs_8h_a7c890f8c0037fc85d1c711eace87d48b}{bbs\_cipher\_suite\_t}}\ \ \ *cipher\_suite,}
+\DoxyCodeLine{00203\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{bbs_8h_ac89498ea1c6e2e9a477430cc9395b3ec}{bbs\_secret\_key}}\ \ sk,}
+\DoxyCodeLine{00204\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{bbs_8h_a10f332e56f89aff4e812674de7e2a07d}{bbs\_public\_key}}\ \ pk,}
+\DoxyCodeLine{00205\ \ \ \ \ \mbox{\hyperlink{bbs_8h_a76a4a8d263f86a1ecf326bcd4eb9e475}{bbs\_signature}}\ \ \ \ \ \ \ \ \ signature,}
+\DoxyCodeLine{00206\ \ \ \ \ \textcolor{keyword}{const}\ uint8\_t\ \ \ \ \ \ \ \ *header,}
+\DoxyCodeLine{00207\ \ \ \ \ uint64\_t\ \ \ \ \ \ \ \ \ \ \ \ \ \ header\_len,}
+\DoxyCodeLine{00208\ \ \ \ \ uint64\_t\ \ \ \ \ \ \ \ \ \ \ \ \ \ num\_messages,}
+\DoxyCodeLine{00209\ \ \ \ \ ...}
+\DoxyCodeLine{00210\ \ \ \ \ );}
+\DoxyCodeLine{00211\ }
+\DoxyCodeLine{00230\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{bbs_8h_a6a83a226c697161c7598e7b7a42d82b5}{bbs\_verify}}\ (}
+\DoxyCodeLine{00231\ \ \ \ \ \mbox{\hyperlink{bbs_8h_a7c890f8c0037fc85d1c711eace87d48b}{bbs\_cipher\_suite\_t}}\ \ \ *cipher\_suite,}
+\DoxyCodeLine{00232\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{bbs_8h_a10f332e56f89aff4e812674de7e2a07d}{bbs\_public\_key}}\ \ pk,}
+\DoxyCodeLine{00233\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{bbs_8h_a76a4a8d263f86a1ecf326bcd4eb9e475}{bbs\_signature}}\ \ \ signature,}
+\DoxyCodeLine{00234\ \ \ \ \ \textcolor{keyword}{const}\ uint8\_t\ \ \ \ \ \ \ \ *header,}
+\DoxyCodeLine{00235\ \ \ \ \ uint64\_t\ \ \ \ \ \ \ \ \ \ \ \ \ \ header\_len,}
+\DoxyCodeLine{00236\ \ \ \ \ uint64\_t\ \ \ \ \ \ \ \ \ \ \ \ \ \ num\_messages,}
+\DoxyCodeLine{00237\ \ \ \ \ ...}
+\DoxyCodeLine{00238\ \ \ \ \ );}
+\DoxyCodeLine{00239\ }
+\DoxyCodeLine{00271\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{bbs_8h_a46711178bb4c66e36d6a12aea27862ac}{bbs\_proof\_gen}}\ (}
+\DoxyCodeLine{00272\ \ \ \ \ \mbox{\hyperlink{bbs_8h_a7c890f8c0037fc85d1c711eace87d48b}{bbs\_cipher\_suite\_t}}\ \ \ *cipher\_suite,}
+\DoxyCodeLine{00273\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{bbs_8h_a10f332e56f89aff4e812674de7e2a07d}{bbs\_public\_key}}\ \ pk,}
+\DoxyCodeLine{00274\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{bbs_8h_a76a4a8d263f86a1ecf326bcd4eb9e475}{bbs\_signature}}\ \ \ signature,}
+\DoxyCodeLine{00275\ \ \ \ \ uint8\_t\ \ \ \ \ \ \ \ \ \ \ \ \ \ *proof,}
+\DoxyCodeLine{00276\ \ \ \ \ \textcolor{keyword}{const}\ uint8\_t\ \ \ \ \ \ \ \ *header,}
+\DoxyCodeLine{00277\ \ \ \ \ uint64\_t\ \ \ \ \ \ \ \ \ \ \ \ \ \ header\_len,}
+\DoxyCodeLine{00278\ \ \ \ \ \textcolor{keyword}{const}\ uint8\_t\ \ \ \ \ \ \ \ *presentation\_header,}
+\DoxyCodeLine{00279\ \ \ \ \ uint64\_t\ \ \ \ \ \ \ \ \ \ \ \ \ \ presentation\_header\_len,}
+\DoxyCodeLine{00280\ \ \ \ \ \textcolor{keyword}{const}\ uint64\_t\ \ \ \ \ \ \ *disclosed\_indexes,}
+\DoxyCodeLine{00281\ \ \ \ \ uint64\_t\ \ \ \ \ \ \ \ \ \ \ \ \ \ disclosed\_indexes\_len,}
+\DoxyCodeLine{00282\ \ \ \ \ uint64\_t\ \ \ \ \ \ \ \ \ \ \ \ \ \ num\_messages,}
+\DoxyCodeLine{00283\ \ \ \ \ ...}
+\DoxyCodeLine{00284\ \ \ \ \ );}
+\DoxyCodeLine{00285\ }
+\DoxyCodeLine{00314\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{bbs_8h_a5ad5e92c29f1bab615dff4f6c367ffba}{bbs\_proof\_verify}}\ (}
+\DoxyCodeLine{00315\ \ \ \ \ \mbox{\hyperlink{bbs_8h_a7c890f8c0037fc85d1c711eace87d48b}{bbs\_cipher\_suite\_t}}\ \ \ *cipher\_suite,}
+\DoxyCodeLine{00316\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{bbs_8h_a10f332e56f89aff4e812674de7e2a07d}{bbs\_public\_key}}\ \ pk,}
+\DoxyCodeLine{00317\ \ \ \ \ \textcolor{keyword}{const}\ uint8\_t\ \ \ \ \ \ \ \ *proof,}
+\DoxyCodeLine{00318\ \ \ \ \ uint64\_t\ \ \ \ \ \ \ \ \ \ \ \ \ \ proof\_len,}
+\DoxyCodeLine{00319\ \ \ \ \ \textcolor{keyword}{const}\ uint8\_t\ \ \ \ \ \ \ \ *header,}
+\DoxyCodeLine{00320\ \ \ \ \ uint64\_t\ \ \ \ \ \ \ \ \ \ \ \ \ \ header\_len,}
+\DoxyCodeLine{00321\ \ \ \ \ \textcolor{keyword}{const}\ uint8\_t\ \ \ \ \ \ \ \ *presentation\_header,}
+\DoxyCodeLine{00322\ \ \ \ \ uint64\_t\ \ \ \ \ \ \ \ \ \ \ \ \ \ presentation\_header\_len,}
+\DoxyCodeLine{00323\ \ \ \ \ \textcolor{keyword}{const}\ uint64\_t\ \ \ \ \ \ \ *disclosed\_indexes,}
+\DoxyCodeLine{00324\ \ \ \ \ uint64\_t\ \ \ \ \ \ \ \ \ \ \ \ \ \ disclosed\_indexes\_len,}
+\DoxyCodeLine{00325\ \ \ \ \ uint64\_t\ \ \ \ \ \ \ \ \ \ \ \ \ \ num\_messages,}
+\DoxyCodeLine{00326\ \ \ \ \ ...}
+\DoxyCodeLine{00327\ \ \ \ \ );}
+\DoxyCodeLine{00328\ }
+\DoxyCodeLine{00334\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{bbs_8h_a7c890f8c0037fc85d1c711eace87d48b}{bbs\_cipher\_suite\_t}}\ *\mbox{\hyperlink{bbs_8h_a4a423545eebbd2afbd2fce8f168b5aeb}{bbs\_sha256\_cipher\_suite}};}
+\DoxyCodeLine{00335\ }
+\DoxyCodeLine{00340\ \textcolor{preprocessor}{\#define\ bbs\_sha256\_keygen\_full(...)\ \ bbs\_keygen\_full(bbs\_sha256\_cipher\_suite,\_\_VA\_ARGS\_\_)}}
+\DoxyCodeLine{00341\ }
+\DoxyCodeLine{00346\ \textcolor{preprocessor}{\#define\ bbs\_sha256\_keygen(...)\ \ \ \ \ \ \ bbs\_keygen(bbs\_sha256\_cipher\_suite,\_\_VA\_ARGS\_\_)}}
+\DoxyCodeLine{00347\ }
+\DoxyCodeLine{00352\ \textcolor{preprocessor}{\#define\ bbs\_sha256\_sk\_to\_pk(...)\ \ \ \ \ bbs\_sk\_to\_pk(bbs\_sha256\_cipher\_suite,\_\_VA\_ARGS\_\_)}}
+\DoxyCodeLine{00353\ }
+\DoxyCodeLine{00358\ \textcolor{preprocessor}{\#define\ bbs\_sha256\_sign(...)\ \ \ \ \ \ \ \ \ bbs\_sign(bbs\_sha256\_cipher\_suite,\_\_VA\_ARGS\_\_)}}
+\DoxyCodeLine{00359\ }
+\DoxyCodeLine{00364\ \textcolor{preprocessor}{\#define\ bbs\_sha256\_verify(...)\ \ \ \ \ \ \ bbs\_verify(bbs\_sha256\_cipher\_suite,\_\_VA\_ARGS\_\_)}}
+\DoxyCodeLine{00365\ }
+\DoxyCodeLine{00370\ \textcolor{preprocessor}{\#define\ bbs\_sha256\_proof\_gen(...)\ \ \ \ bbs\_proof\_gen(bbs\_sha256\_cipher\_suite,\_\_VA\_ARGS\_\_)}}
+\DoxyCodeLine{00371\ }
+\DoxyCodeLine{00376\ \textcolor{preprocessor}{\#define\ bbs\_sha256\_proof\_verify(...)\ bbs\_proof\_verify(bbs\_sha256\_cipher\_suite,\_\_VA\_ARGS\_\_)}}
+\DoxyCodeLine{00377\ }
+\DoxyCodeLine{00383\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{bbs_8h_a7c890f8c0037fc85d1c711eace87d48b}{bbs\_cipher\_suite\_t}}\ *\mbox{\hyperlink{bbs_8h_a040795ea1a4f45b5f9471e7d913f85d7}{bbs\_shake256\_cipher\_suite}};}
+\DoxyCodeLine{00384\ }
+\DoxyCodeLine{00390\ \textcolor{preprocessor}{\#define\ bbs\_shake256\_keygen\_full(...)\ \ bbs\_keygen\_full(bbs\_shake256\_cipher\_suite,\_\_VA\_ARGS\_\_)}}
+\DoxyCodeLine{00395\ \textcolor{preprocessor}{\#define\ bbs\_shake256\_keygen(...)\ \ \ \ \ \ \ bbs\_keygen(bbs\_shake256\_cipher\_suite,\_\_VA\_ARGS\_\_)}}
+\DoxyCodeLine{00396\ }
+\DoxyCodeLine{00401\ \textcolor{preprocessor}{\#define\ bbs\_shake256\_sk\_to\_pk(...)\ \ \ \ \ bbs\_sk\_to\_pk(bbs\_shake256\_cipher\_suite,\_\_VA\_ARGS\_\_)}}
+\DoxyCodeLine{00402\ }
+\DoxyCodeLine{00407\ \textcolor{preprocessor}{\#define\ bbs\_shake256\_sign(...)\ \ \ \ \ \ \ \ \ bbs\_sign(bbs\_shake256\_cipher\_suite,\_\_VA\_ARGS\_\_)}}
+\DoxyCodeLine{00408\ }
+\DoxyCodeLine{00413\ \textcolor{preprocessor}{\#define\ bbs\_shake256\_verify(...)\ \ \ \ \ \ \ bbs\_verify(bbs\_shake256\_cipher\_suite,\_\_VA\_ARGS\_\_)}}
+\DoxyCodeLine{00414\ }
+\DoxyCodeLine{00419\ \textcolor{preprocessor}{\#define\ bbs\_shake256\_proof\_gen(...)\ \ \ \ bbs\_proof\_gen(bbs\_shake256\_cipher\_suite,\_\_VA\_ARGS\_\_)}}
+\DoxyCodeLine{00420\ }
+\DoxyCodeLine{00425\ \textcolor{preprocessor}{\#define\ bbs\_shake256\_proof\_verify(...)\ bbs\_proof\_verify(bbs\_shake256\_cipher\_suite,\_\_VA\_ARGS\_\_)}}
+\DoxyCodeLine{00426\ }
+\DoxyCodeLine{00427\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}
